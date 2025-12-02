@@ -10,17 +10,12 @@ class Day2 : AbstractDay() {
     override fun question1(): Any {
         var output: Long = 0
         for (range in input) {
-            val start = range.split("-")[0].toLong()
-            val end = range.split("-")[1].toLong()
+            val (start, end) = range.split("-").map { it.toLong() }
 
             for (i in start..end) {
-                if (i.toString().startsWith("0")) {
-                    output += i
-                    continue
-                }
-
-                val length = i.toString().length
-                if (i.toString().take(length / 2) == i.toString().substring(length / 2)) {
+                val str = i.toString()
+                val midPoint = str.length / 2
+                if (str.take(midPoint) == str.substring(midPoint)) {
                     output += i
                 }
             }
@@ -32,8 +27,7 @@ class Day2 : AbstractDay() {
         var output: Long = 0
 
         for (range in input) {
-            val start = range.split("-")[0].toLong()
-            val end = range.split("-")[1].toLong()
+            val (start, end) = range.split("-").map { it.toLong() }
 
             for (i in start..end) {
                 if (!isValid(i.toString())) {
@@ -45,10 +39,6 @@ class Day2 : AbstractDay() {
     }
 
     private fun isValid(input: String): Boolean {
-        if (input[0] == '0') {
-            return false
-        }
-
         var chunkSize = input.length / 2
 
         while (chunkSize > 0) {

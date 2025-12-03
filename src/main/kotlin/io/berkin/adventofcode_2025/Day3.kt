@@ -25,9 +25,8 @@ class Day3 : AbstractDay() {
         parsedInput.forEach { numbers ->
             val queue = ArrayDeque<Int>()
             var lineOutput = ""
-            queue.add(numbers[0])
 
-            for (i in 1 until numbers.size) {
+            for (i in 0 until numbers.size) {
                 while (isRemovalPossible(queue.size, target, numbers.size, i) && queue.last() < numbers[i]) {
                     queue.removeLast()
                 }

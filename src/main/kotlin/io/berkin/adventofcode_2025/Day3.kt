@@ -28,28 +28,13 @@ class Day3 : AbstractDay() {
             queue.add(numbers[0])
 
             for (i in 1 until numbers.size) {
-                if (isRemovalPossible(queue.size, target, numbers.size, i)){
-                    while (isRemovalPossible(queue.size, target, numbers.size, i) && queue.isNotEmpty() && queue.last() < numbers[i]){
-                        queue.removeLast()
-                    }
-                    queue.addLast(numbers[i])
-                    continue
+                while (isRemovalPossible(queue.size, target, numbers.size, i) && queue.last() < numbers[i]) {
+                    queue.removeLast()
                 }
-
-                if (isRemovalPossible(queue.size, target, numbers.size, i) && numbers[i] > queue.last()){
-                    if (queue.size >= target){
-                        while (queue.isNotEmpty() && queue.size >= target){
-                            queue.removeLast()
-                        }
-                    }else{
-                        queue.removeLast()
-                    }
-                }
-
                 queue.addLast(numbers[i])
             }
 
-            repeat(target){
+            repeat(target) {
                 lineOutput += queue.removeFirst()
             }
 
@@ -58,7 +43,7 @@ class Day3 : AbstractDay() {
         return output
     }
 
-    private fun isRemovalPossible(queueSize: Int, target: Int, inputSize:Int, currentIndex: Int) : Boolean {
-        return target - queueSize < inputSize - currentIndex
+    private fun isRemovalPossible(queueSize: Int, target: Int, inputSize: Int, currentIndex: Int): Boolean {
+        return queueSize > 0 && target - queueSize < inputSize - currentIndex
     }
 }

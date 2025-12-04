@@ -45,10 +45,9 @@ class Day4 : AbstractDay() {
     private fun isAccessible(row: Int, col: Int, grid: List<List<Char>>): Boolean {
         var adjacentTowelSize = 0
         repeat(vectorColumn.size) {
-            if (isSafe(
-                    row + vectorRow[it], col + vectorColumn[it]
-                ) && (grid[row + vectorRow[it]][col + vectorColumn[it]] == '@' || grid[row + vectorRow[it]][col + vectorColumn[it]] == 'x')
-            ) {
+            val newRow = row + vectorRow[it]
+            val newCol = col + vectorColumn[it]
+            if (isSafe(newRow, newCol) && (grid[newRow][newCol] == '@' || grid[newRow][newCol] == 'x')) {
                 adjacentTowelSize++
             }
         }

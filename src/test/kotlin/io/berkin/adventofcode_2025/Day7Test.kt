@@ -17,12 +17,12 @@ class Day7Test {
 
     @Test
     fun question1() {
-        Assertions.assertThat(day.question1()).isEqualTo(21)
+        Assertions.assertThat(day.question1()).isEqualTo(1703)
     }
 
     @Test
     fun question2() {
-        Assertions.assertThat(day.question2()).isEqualTo(11419862653216)
+        Assertions.assertThat(day.question2()).isEqualTo(171692855075500)
     }
 
     @BeforeEach
